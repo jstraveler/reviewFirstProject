@@ -5,10 +5,13 @@ public class LoginPage extends BaseClass{
     private static final String LOCATOR_USERNAME = ".//input[@id='field_email']";
     private static final String LOCATOR_PASSWORD = ".//input[@id='field_password']";
     private static final String LOCATOR_SIGN_IN = ".//*[@value='Войти в Одноклассники']";
+    private static final String loginURL = "https://ok.ru/";
     private WebDriver driver;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        driver.manage().window();
+        driver.get(loginURL);
     }
 
     public UserPage doLogin(String username, String password) {
