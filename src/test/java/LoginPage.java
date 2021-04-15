@@ -10,11 +10,11 @@ public class LoginPage extends BaseClass{
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        driver.manage().window();
-        driver.get(loginURL);
     }
 
     public UserPage doLogin(String username, String password) {
+        driver.manage().window();
+        driver.get(loginURL);
         driver.findElement(By.xpath(LOCATOR_USERNAME)).sendKeys(username);
         driver.findElement(By.xpath(LOCATOR_PASSWORD)).sendKeys(password);
         driver.findElement(By.xpath(LOCATOR_SIGN_IN)).click();

@@ -16,7 +16,8 @@ public class LoginTest extends BaseClass{
     public void testLoginIn() {
         LoginPage loginPage = new LoginPage(driver);
         //login, password указываешь чтобы зайти
-        UserPage userPage = loginPage.doLogin("awdawdaw", "awdawdaw");
+        UserPage userPage = loginPage.doLogin("", "");
+        MessagesPage messagesPage = userPage.getMessagesPage();
     }
 
     @After
