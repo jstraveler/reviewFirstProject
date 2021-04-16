@@ -13,7 +13,7 @@ public class LoginPage extends BaseClass{
     }
 
     public UserPage doLogin(String username, String password) {
-        driver.manage().window();
+        driver.manage().window().maximize();
         driver.get(loginURL);
         driver.findElement(By.xpath(LOCATOR_USERNAME)).sendKeys(username);
         driver.findElement(By.xpath(LOCATOR_PASSWORD)).sendKeys(password);

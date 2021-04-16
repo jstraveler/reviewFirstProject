@@ -5,7 +5,6 @@ public class UserPage {
     private static final String LOCATOR_MESSAGES = ".//div[@data-module='ToolbarManager']//li[@data-l='t,messages']";
     private WebDriver driver;
 
-
     public UserPage(WebDriver driver) {
         this.driver = driver;
     }
