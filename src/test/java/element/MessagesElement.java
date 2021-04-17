@@ -1,3 +1,5 @@
+package element;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +11,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class MessagesElement {
+    private static final String JAVASCRIPT_SCRIPT = "return document.querySelector(\"#msg_layer\").shadowRoot";
+    private static final String CSS_SELECTOR_ELEMENT_MESSAGE = "msg-message-list";
+    private static final String CSS_SELECTOR_MESSAGE = "msg-message";
     private WebElement rootElem;
+    private WebElement shadowRoot;
     private WebDriver driver;
 
 
@@ -20,15 +26,15 @@ public class MessagesElement {
 
     private void findRootElement() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement shadowDom = (WebElement) js.executeScript("return document.querySelector(\"#msg_layer\").shadowRoot");
-        this.rootElem = shadowDom.findElement(By.cssSelector("msg-message-list"));
+        shadowRoot = (WebElement) js.executeScript(JAVASCRIPT_SCRIPT);
+        this.rootElem = shadowRoot.findElement(By.cssSelector(CSS_SELECTOR_ELEMENT_MESSAGE));
     }
 
     public List<MessageWrapper> getListMessages() {
-        List<WebElement> webElementList = rootElem.findElements(By.cssSelector("msg-message"));
+        List<WebElement> webElementList = rootElem.findElements(By.cssSelector(CSS_SELECTOR_MESSAGE));
         List<MessageWrapper> messageWrapperList = new ArrayList<>();
         for (WebElement elem : webElementList) {
-            messageWrapperList.add(new MessageWrapper(elem));
+            messageWrapperList.add(new MessageWrapper(elem, shadowRoot));
         }
         Collections.reverse(messageWrapperList);
         return messageWrapperList;

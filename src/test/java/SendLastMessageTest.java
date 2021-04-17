@@ -1,35 +1,47 @@
+import element.FriendsElement;
+import element.MessagesElement;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import page.BaseClass;
+import page.LoginPage;
+import page.MessagesPage;
+import page.UserPage;
 import wrapper.FriendWrapper;
 import wrapper.MessageWrapper;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest extends BaseClass{
+public class SendLastMessageTest extends BaseClass {
     private WebDriver driver;
+    private UserPage userPage;
 
     @Before
     public void init() {
         driver = driverInit();
+        LoginPage loginPage = new LoginPage(driver);
+        userPage = loginPage.doLogin("", "");
     }
 
     @Test
-    public void testLoginIn() {
-        LoginPage loginPage = new LoginPage(driver);
-        UserPage userPage = loginPage.doLogin("", "");
+    public void testSendLastMessage() {
         MessagesPage messagesPage = userPage.getMessagesPage();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         FriendsElement friendsElement = messagesPage.getFriendsElement();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         List<FriendWrapper> friendsElementList = friendsElement.getFriendList();
-        friendsElementList.get(0).choose();
+        for (FriendWrapper friendWrapper : friendsElementList) {
+            if (friendWrapper.getFullName().equals("")) {
+                friendWrapper.choose();
+                break;
+            }
+        }
         MessagesElement messagesElement = messagesPage.getMessagesElement();
         List<MessageWrapper> messageWrapperList = messagesElement.getListMessages();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        System.out.println(messageWrapperList.get(0).getText());
+        messageWrapperList.get(0).sendMessage("", driver);
+        Assert.assertNotEquals("Test sendLastMessage has errors", messageWrapperList.get(1).getText(), messageWrapperList.get(0).getText());
     }
 
     @After

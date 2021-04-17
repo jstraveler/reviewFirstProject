@@ -1,4 +1,9 @@
+package page;
+
 import org.openqa.selenium.WebDriver;
+import element.MessagesElement;
+import element.FriendsElement;
+
 
 public class MessagesPage {
     private WebDriver driver;

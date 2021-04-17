@@ -1,3 +1,5 @@
+package element;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FriendsElement {
+    private static final String JAVASCRIPT_SCRIPT = "return document.querySelector(\"#msg_layer\").shadowRoot";
+    private static final String CSS_SELECTOR_MAIN_ELEMENT = "msg-app";
+    private static final String CSS_SELECTOR_MESSAGE = "msg-chats-list-item";
     private WebElement rootElem;
     private WebDriver driver;
 
@@ -18,12 +23,12 @@ public class FriendsElement {
 
     private void findRootElement() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement shadowDom = (WebElement) js.executeScript("return document.querySelector(\"#msg_layer\").shadowRoot");
-        rootElem = shadowDom.findElement(By.cssSelector("msg-app"));
+        WebElement shadowDom = (WebElement) js.executeScript(JAVASCRIPT_SCRIPT);
+        rootElem = shadowDom.findElement(By.cssSelector(CSS_SELECTOR_MAIN_ELEMENT));
     }
 
     public List<FriendWrapper> getFriendList() {
-        List<WebElement> webElementList = rootElem.findElements(By.cssSelector("msg-chats-list-item"));
+        List<WebElement> webElementList = rootElem.findElements(By.cssSelector(CSS_SELECTOR_MESSAGE));
         List<FriendWrapper> friendWrapperList = new ArrayList<>();
         for (WebElement elem: webElementList) {
             friendWrapperList.add(new FriendWrapper(elem));

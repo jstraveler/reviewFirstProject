@@ -1,7 +1,9 @@
+package page;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BaseClass{
+public class LoginPage extends BaseClass {
     private static final String LOCATOR_USERNAME = ".//input[@id='field_email']";
     private static final String LOCATOR_PASSWORD = ".//input[@id='field_password']";
     private static final String LOCATOR_SIGN_IN = ".//*[@value='Войти в Одноклассники']";
