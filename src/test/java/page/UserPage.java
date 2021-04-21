@@ -15,4 +15,6 @@ public class UserPage {
         driver.findElement(By.xpath(LOCATOR_MESSAGES)).click();
         return new MessagesPage(driver);
     }
+
+    /** Нет метода driverDown **/
 }

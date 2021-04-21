@@ -9,6 +9,7 @@ import wrapper.FriendWrapper;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Можно объединить с FriendWrapper **/
 public class FriendsElement {
     private static final String JAVASCRIPT_SCRIPT = "return document.querySelector(\"#msg_layer\").shadowRoot";
     private static final String CSS_SELECTOR_MAIN_ELEMENT = "msg-app";

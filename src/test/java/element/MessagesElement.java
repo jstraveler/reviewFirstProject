@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/** Можно объединить с MessageWrapper **/
 public class MessagesElement {
     private static final String JAVASCRIPT_SCRIPT = "return document.querySelector(\"#msg_layer\").shadowRoot";
     private static final String CSS_SELECTOR_ELEMENT_MESSAGE = "msg-message-list";
@@ -17,7 +18,6 @@ public class MessagesElement {
     private WebElement rootElem;
     private WebElement shadowRoot;
     private WebDriver driver;
-
 
     public MessagesElement(WebDriver driver) {
         this.driver = driver;
@@ -39,6 +39,4 @@ public class MessagesElement {
         Collections.reverse(messageWrapperList);
         return messageWrapperList;
     }
-
-
 }

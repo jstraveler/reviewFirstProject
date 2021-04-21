@@ -15,6 +15,8 @@ import wrapper.MessageWrapper;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+
+/** Можно объединить в один тестовый класс DeleteLastMessageTest и SendLastMessageTest **/
 public class DeleteLastMessageTest extends BaseClass {
     private WebDriver driver;
     private UserPage userPage;

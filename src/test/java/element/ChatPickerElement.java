@@ -9,6 +9,8 @@ import wrapper.ChatPickerWrapper;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/** Можно объединить с ChatPickerWrapper **/
 public class ChatPickerElement {
     private static final String JAVASCRIPT_SCRIPT = "return document.querySelector(\"#msg_layer\").shadowRoot";
     private static final String CSS_SELECTOR_ELEMENT_CHAT_PICKER = "msg-app";

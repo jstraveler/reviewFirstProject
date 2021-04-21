@@ -3,6 +3,8 @@ package page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
+/**От BaseClass наследуется и ветка PageObject и ветка Test, у каждой ветки дб свой базовый класс**/
 public class BaseClass {
 
     public WebDriver driverInit() {

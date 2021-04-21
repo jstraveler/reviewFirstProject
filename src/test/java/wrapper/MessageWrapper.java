@@ -54,6 +54,7 @@ public class MessageWrapper {
         actions.moveToElement(helpElement).click().perform();
         helpElement = helpElement.findElement(By.cssSelector(CSS_SELECTOR_MESSAGE_MENU_SEND));
         actions.moveToElement(helpElement).click().perform();
+        /** вместо sleep лучше сделать проверку на наличие элемента или неявное ожидание **/
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

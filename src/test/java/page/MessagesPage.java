@@ -19,4 +19,6 @@ public class MessagesPage {
     public MessagesElement getMessagesElement() {
         return new MessagesElement(driver);
     }
+
+    /** Нет метода driverDown **/
 }
